@@ -1,22 +1,17 @@
 %define major 1
 
-# For now there is no special macro 'cmake_qt5', so we use fixed path to qt5
-%define qt5_path /usr/lib/qt5
-
+Summary:	Library that allows developer to access PolicyKit-1 API
 Name:		polkit-qt5-1
 Version:	0.103.1
-Summary:	Library that allows developer to access PolicyKit-1 API
-Release:	2
+Release:	4
 License:	LGPLv2+
 Group:		Graphical desktop/KDE
-URL:		https://projects.kde.org/projects/kdesupport/polkit-qt-1
+Url:		https://projects.kde.org/projects/kdesupport/polkit-qt-1
 Source0: 	%{name}-%{version}.tar.bz2
-#Source0:	http://fr2.rpmfind.net/linux/KDE/stable/apps/KDE4.x/admin/%{name}-%{version}.tar.bz2
-
-BuildRequires:	polkit-1-devel >= 0.98.1
-BuildRequires:	qt5-devel
 BuildRequires:	cmake
-BuildRequires:   qmake5
+BuildRequires:	qmake5
+BuildRequires:	polkit-1-devel >= 0.98.1
+BuildRequires:	qt5-devel >= 5.1.0
 
 %description
 Polkit-qt is a library that allows developer to access PolicyKit-1
@@ -94,12 +89,9 @@ based on %{name}.
 %setup -q
 
 %build
-%cmake -DCMAKE_PREFIX_PATH=%{qt5_path}
+%cmake_qt5 
 %make
 
 %install
 %makeinstall_std -C build
-
-
-%changelog
 
