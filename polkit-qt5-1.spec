@@ -7,11 +7,11 @@ Release:	4
 License:	LGPLv2+
 Group:		Graphical desktop/KDE
 Url:		https://projects.kde.org/projects/kdesupport/polkit-qt-1
-Source0: 	%{name}-%{version}.tar.bz2
+Source0:	%{name}-%{version}.tar.bz2
 BuildRequires:	cmake
 BuildRequires:	qmake5
-BuildRequires:	polkit-1-devel >= 0.98.1
 BuildRequires:	qt5-devel >= 5.1.0
+BuildRequires:	pkgconfig(polkit-agent-1)
 
 %description
 Polkit-qt is a library that allows developer to access PolicyKit-1
@@ -23,7 +23,6 @@ API with a nice Qt-style API
 %package -n %{libpolkit_qt5_core_1}
 Summary:	Polkit-Qt core library
 Group:		System/Libraries
-Obsoletes:	%{_lib}polkit-qt-core-10 < %{version}-%{release}
 
 %description -n %{libpolkit_qt5_core_1}
 Polkit-Qt core library.
@@ -37,7 +36,6 @@ Polkit-Qt core library.
 %package -n %{libpolkit_qt5_gui_1}
 Summary:	Polkit-Qt core library
 Group:		System/Libraries
-Obsoletes:	%{_lib}polkit-qt-gui-10 < %{version}-%{release}
 
 %description -n %{libpolkit_qt5_gui_1}
 Polkit-Qt core library.
@@ -51,7 +49,6 @@ Polkit-Qt core library.
 %package -n %{libpolkit_qt5_agent_1}
 Summary:	Polkit-Qt core library
 Group:		System/Libraries
-Obsoletes:	%{_lib}polkit-qt-agent-10 < %{version}-%{release}
 
 %description -n %{libpolkit_qt5_agent_1}
 Polkit-Qt core library.
