@@ -1,13 +1,14 @@
 %define major 1
+%define	oname polkit-qt-1
 
 Summary:	Library that allows developer to access PolicyKit-1 API
 Name:		polkit-qt5-1
-Version:	0.103.1
-Release:	10
+Version:	0.112.0
+Release:	1
 License:	LGPLv2+
 Group:		Graphical desktop/KDE
 Url:		https://projects.kde.org/projects/kdesupport/polkit-qt-1
-Source0:	%{name}-%{version}.tar.bz2
+Source0:	http://mirrors.dotsrc.org/kde/stable/apps/KDE4.x/admin/%{oname}-%{version}.tar.bz2
 BuildRequires:	cmake
 BuildRequires:	qmake5
 BuildRequires:	qt5-devel >= 5.1.0
@@ -70,7 +71,7 @@ This package contains header files needed if you wish to build applications
 based on %{name}.
 
 %files devel
-%{_includedir}/polkit-qt-1
+%{_includedir}/polkit-qt5-1
 %{_libdir}/libpolkit-qt5-agent-1.so
 %{_libdir}/libpolkit-qt5-core-1.so
 %{_libdir}/libpolkit-qt5-gui-1.so
@@ -83,12 +84,10 @@ based on %{name}.
 #-----------------------------------------------------------------------------
 
 %prep
-%setup -q
-
+%setup -qn %{oname}-%{version}
 %build
-%cmake_qt5 
+%cmake_qt5 -DBUILD_EXAMPLES:BOOL=OFF
 %make
 
 %install
 %makeinstall_std -C build
-
