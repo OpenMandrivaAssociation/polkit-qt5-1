@@ -4,7 +4,7 @@
 Summary:	Library that allows developer to access PolicyKit-1 API
 Name:		polkit-qt5-1
 Version:	0.112.0
-Release:	2
+Release:	3
 License:	LGPLv2+
 Group:		Graphical desktop/KDE
 Url:		https://projects.kde.org/projects/kdesupport/polkit-qt-1
@@ -24,6 +24,7 @@ API with a nice Qt-style API
 %package -n %{libpolkit_qt5_core_1}
 Summary:	Polkit-Qt core library
 Group:		System/Libraries
+Provides:	polkit-agent
 
 %description -n %{libpolkit_qt5_core_1}
 Polkit-Qt core library.
