@@ -1,0 +1,49 @@
+From 1b4b6b721d4f853f0ef93808ccf6648f3a7b3b9f Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heirecka@exherbo.org>
+Date: Tue, 8 Mar 2016 22:41:32 +0100
+Subject: [PATCH 09/12] Fix build with -DBUILD_TEST=TRUE
+
+Otherwise it fails with "test/test.cpp:49:14: error: 'qVariantValue'
+was not declared in this scope". qVariantValue is a obsolete
+workaround for MSVC 6, which was released 1998 and thus seems ancient
+enough to change this.
+
+REVIEW: 127334
+---
+ test/test.cpp | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/test/test.cpp b/test/test.cpp
+index afb7f64..2c7db28 100644
+--- a/test/test.cpp
++++ b/test/test.cpp
+@@ -46,7 +46,7 @@ void TestAuth::test_Auth_checkAuthorization()
+     // Test if the signal was emitted
+     QCOMPARE(spy.count(), 1);
+     // Test the result
+-    result = qVariantValue<PolkitQt1::Authority::Result> (spy.takeFirst()[0]);
++    result = spy.takeFirst()[0].value<PolkitQt1::Authority::Result>();
+     QCOMPARE(result, Authority::No);
+     QVERIFY(!authority->hasError());
+     spy.clear();
+@@ -92,7 +92,7 @@ void TestAuth::test_Auth_enumerateActions()
+     Authority::instance()->enumerateActions();
+     wait();
+     QCOMPARE(spy.count(), 1);
+-    list = qVariantValue<PolkitQt1::ActionDescription::List> (spy.takeFirst()[0]);
++    list = spy.takeFirst()[0].value<PolkitQt1::ActionDescription::List>();
+     QVERIFY(!Authority::instance()->hasError());
+     Q_FOREACH(const ActionDescription &ad, list) {
+         if ((ad.actionId() == "org.qt.policykit.examples.kick") ||
+@@ -154,7 +154,7 @@ void TestAuth::test_Authority()
+                        "OpenSession");
+     QDBusMessage reply = QDBusConnection::systemBus().call(msg);
+     QString cookie;
+-    cookie = qVariantValue<QString> (reply.arguments()[0]);
++    cookie = reply.arguments()[0].value<QString>();
+ 
+ 
+     msg = QDBusMessage::createMethodCall("org.freedesktop.ConsoleKit",
+-- 
+2.17.0
+

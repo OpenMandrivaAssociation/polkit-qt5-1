@@ -1,0 +1,20 @@
+From bdc30be4bea541692fc51da66184f5827406b68f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Martin=20Gr=C3=A4=C3=9Flin?= <mgraesslin@kde.org>
+Date: Tue, 12 Jan 2016 10:10:19 +0100
+Subject: [PATCH 04/12] Add .reviewboardrc
+
+---
+ .reviewboardrc | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/.reviewboardrc b/.reviewboardrc
+index 95c18ae..400c681 100644
+--- a/.reviewboardrc
++++ b/.reviewboardrc
+@@ -1 +1,2 @@
+-REVIEWBOARD_URL = "http://git.reviewboard.kde.org"
++REVIEWBOARD_URL = "https://git.reviewboard.kde.org"
++REPOSITORY = 'git://anongit.kde.org/polkit-qt-1'
+-- 
+2.17.0
+
