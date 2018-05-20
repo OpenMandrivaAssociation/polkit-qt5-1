@@ -27,6 +27,8 @@ BuildRequires:	ninja
 BuildRequires:	qmake5
 BuildRequires:	qt5-devel >= 5.1.0
 BuildRequires:	pkgconfig(polkit-agent-1)
+# To make qmake happy
+BuildRequires:	qt5-platformtheme-gtk3
 
 %description
 Polkit-qt is a library that allows developer to access PolicyKit-1
