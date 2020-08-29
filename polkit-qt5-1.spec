@@ -91,12 +91,6 @@ based on %{name}.
 %autosetup -p1 -n %{oname}-%{version}
 
 %build
-%ifarch %{aarch64}
-# signal/slot problem as of Qt 5.12, polkit-qt5-1 0.112, clang 7.0.1
-# more details in comment on similar workaround in the sddm package
-export CC=gcc
-export CXX=g++
-%endif
 %cmake_qt5 -DBUILD_EXAMPLES:BOOL=OFF -G Ninja
 %ninja_build
 
