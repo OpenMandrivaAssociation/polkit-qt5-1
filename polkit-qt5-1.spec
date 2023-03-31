@@ -4,7 +4,7 @@
 Summary:	Library that allows developer to access PolicyKit-1 API
 Name:		polkit-qt5-1
 Version:	0.114.0
-Release:	1
+Release:	2
 License:	LGPLv2+
 Group:		Graphical desktop/KDE
 Url:		https://projects.kde.org/projects/kdesupport/polkit-qt-1
